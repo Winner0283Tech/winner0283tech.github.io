@@ -1,31 +1,149 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevHub</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card: #161b22;
+      --text: #c9d1d9;
+      --accent: #58a6ff;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      padding: 20px;
+      background: #010409;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+    }
+
+    nav a {
+      margin: 0 10px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .hero h1 {
+      font-size: 3em;
+    }
+
+    .section {
+      padding: 50px 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 20px;
+      border-radius: 12px;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #010409;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);} 
+      to { opacity: 1; transform: translateY(0);} 
+    }
+  </style>
+</head>
 <body>
 
-  <main>
-    <h1>Mein Tutorial</h1>
-    <p>Inhalt …</p>
-  </main>
+<header>
+  <h2>DevHub</h2>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#downloads">Downloads</a>
+    <a href="#videos">Videos</a>
+    <a href="#bilder">Bilder</a>
+    <a href="#community">Community</a>
+  </nav>
+</header>
 
-  <!-- 👇 HIER rein -->
-  <section class="comments">
-    <h2>💬 Diskussion</h2>
+<section class="hero">
+  <h1>🚀 Mein DevHub</h1>
+  <p>Tools, Tutorials, Downloads & Community</p>
+</section>
 
-    <!-- Giscus Script -->
-    <script src="https://giscus.app/client.js"
-        data-repo="Winner0283Tech/Winner0283Tech.github.io"
-        data-repo-id="R_kgDORlSBLA"
-        data-category="Q&A"
-        data-category-id="DIC_kwDORlSBLM4C6cgt"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="de"
-        crossorigin="anonymous"
-        async>
-</script>
+<section id="downloads" class="section">
+  <h2>📦 Downloads</h2>
+  <div class="grid">
+    <div class="card">Tool 1 Download</div>
+    <div class="card">Tool 2 Download</div>
+  </div>
+</section>
 
-  </section>
+<section id="videos" class="section">
+  <h2>🎥 Videos</h2>
+  <div class="grid">
+    <div class="card">Video 1</div>
+    <div class="card">Video 2</div>
+  </div>
+</section>
+
+<section id="bilder" class="section">
+  <h2>🖼 Bilder</h2>
+  <div class="grid">
+    <div class="card">Bild 1</div>
+    <div class="card">Bild 2</div>
+  </div>
+</section>
+
+<section id="community" class="section">
+  <h2>💬 Community</h2>
+  <p>Diskutiere mit anderen Entwicklern:</p>
+
+  <script src="https://giscus.app/client.js"
+          data-repo="DEIN_USERNAME/DEIN_REPO"
+          data-repo-id="REPO_ID"
+          data-category="General"
+          data-category-id="CATEGORY_ID"
+          data-mapping="pathname"
+          data-theme="preferred_color_scheme"
+          data-lang="de"
+          crossorigin="anonymous"
+          async>
+  </script>
+</section>
+
+<footer>
+  <p>© 2026 DevHub</p>
+</footer>
 
 </body>
+</html>
