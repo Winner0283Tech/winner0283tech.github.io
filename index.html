@@ -131,6 +131,7 @@
     <a href="#videos">Videos</a>
     <a href="#bilder">Bilder</a>
     <a href="#community">Community</a>
+    <div class="navbar-social">…</div>
   </nav>
 </header>
 
@@ -162,7 +163,39 @@
     <div class="card">Bild 2</div>
   </div>
 </section>
+<!-- Social Media Hub für Navbar -->
+<div class="navbar-social">
+    <a href="https://github.com/Winner0283Tech" target="_blank" title="GitHub">
+        <i class="fab fa-github"></i>
+    </a>
+    <a href="https://www.reddit.com/user/Winner0283Tech" target="_blank" title="Reddit">
+        <i class="fab fa-reddit"></i>
+    </a>
+</div>
 
+<style>
+/* Mini Social Media Hub für Navbar */
+.navbar-social {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-left: auto; /* schiebt die Icons nach rechts */
+}
+
+.navbar-social i {
+    font-size: 20px;
+    color: white; /* passe an deine Navbar-Farbe an */
+    transition: transform 0.2s, color 0.2s;
+}
+
+.navbar-social i:hover {
+    color: #0078d7;
+    transform: scale(1.2);
+}
+</style>
+
+<!-- Font Awesome (einmal im Head, falls noch nicht vorhanden) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <section id="community" class="section">
   <h2>💬 Community</h2>
   <p>Diskutiere mit anderen Entwicklern:</p>
