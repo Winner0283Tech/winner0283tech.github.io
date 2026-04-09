@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Startseite</title>
+
+<style>
+/* --- Allgemeines Layout --- */
+body {
+    margin: 0;
+  font-family: Arial, sans-serif;
+    background: url("https://bing.biturl.top/?resolution=3840&format=image&index=0&mkt=de-DE")
+                no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    backdrop-filter: blur(5px);
+  padding: 20px 0 0;
+}
+
+.container {
+    text-align: center;
+    width: 90%;
+    max-width: 1000px;
+    animation: fadeIn 1.2s ease-out;
+    color: white;
+}
+
+/* --- Fade In Animation --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Uhrzeit & Datum --- */
+#clock {
+    color: white;
+    font-size: 2.2rem;
+    text-shadow: 0 0 12px rgba(0,0,0,0.4);
+    margin-bottom: 5px;
+    animation: fadeIn 1.5s ease-out;
+}
+#date {
+    color: white;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    text-shadow: 0 0 12px rgba(0,0,0,0.4);
+    animation: fadeIn 1.8s ease-out;
+}
+
+/* --- Suchleiste --- */
+.search-box {
+    margin-bottom: 35px;
+    display: flex;
+    justify-content: center;
+}
+.search-box input {
+    width: 70%;
+    max-width: 450px;
+    padding: 14px 18px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    font-size: 1.1rem;
+    background: rgba(255,255,255,0.25);
+    color: white;
+    backdrop-filter: blur(6px);
+    transition: all 0.4s ease;
+    animation: fadeIn 2.1s ease-out;
+}
+.search-box input::placeholder {
+    color: rgba(255,255,255,0.8);
+}
+.search-box input:focus {
+    width: 90%;
+    background: rgba(255,255,255,0.35);
+    box-shadow: 0 0 12px rgba(255,255,255,0.6);
+}
+
+/* --- Icon-Leiste --- */
+.icon-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+.icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(8px);
+    transition: transform .3s ease, background .3s ease, box-shadow .3s ease;
+    cursor: grab;
+    opacity: 0;
+    animation: iconFadeIn 1s forwards, floatIcon 3s ease-in-out infinite;
+    animation-delay: 0.5s;
+}
+.icon:hover {
+    transform: scale(1.2) rotate(5deg);
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 0 20px rgba(255,255,255,0.7);
+}
+.icon img {
+    width: 40px;
+    height: 40px;
+    filter: drop-shadow(0 0 4px rgba(0,0,0,0.4));
+    pointer-events: none;
+}
+@keyframes iconFadeIn {
+    from { opacity: 0; transform: scale(0.7); }
+    to { opacity: 1; transform: scale(1); }
+}
+@keyframes floatIcon {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+/* --- Widgets Container --- */
+.widget-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* --- Widget Styles --- */
+.widget {
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(8px);
+    border-radius: 15px;
+    padding: 20px;
+    min-width: 250px;
+    max-width: 300px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 0 12px rgba(0,0,0,0.4);
+}
+
+/* --- Taschenrechner --- */
+.calculator input {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: none;
+    text-align: right;
+    font-size: 1.2rem;
+}
+.calculator button {
+    width: 22%;
+    margin: 3px 1%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    background: rgba(255,255,255,0.3);
+    color: white;
+    transition: all 0.2s;
+}
+.calculator button:hover {
+    background: rgba(255,255,255,0.5);
+}
+
+/* --- ToDo-Liste --- */
+.todo input {
+    width: 70%;
+    padding: 8px;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 10px;
+}
+.todo button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.3);
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.todo button:hover {
+    background: rgba(255,255,255,0.5);
+}
+.todo ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+.todo li {
+    padding: 6px 10px;
+    margin-bottom: 5px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .icon { width: 60px; height: 60px; }
+    .icon img { width: 35px; height: 35px; }
+    .widget-container { flex-direction: column; align-items: center; }
+}
+@media (max-width: 480px) {
+    .icon { width: 50px; height: 50px; }
+    .icon img { width: 30px; height: 30px; }
+    .calculator button { width: 22%; margin: 2px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div id="clock">00:00:00</div>
+    <div id="date">Lädt…</div>
+
+    <form class="search-box" action="https://www.google.com/search" method="GET" target="_blank">
+      <label>
+        <input type="text" name="q" placeholder="Google durchsuchen …">
+      </label>
+    </form>
+
+    <div class="icon-grid" id="iconGrid">
+        <!-- Icons -->
+        <a class="icon" href="https://youtube.com" target="_blank" data-id="youtube">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube">
+        </a>
+        <a class="icon" href="https://github.com" target="_blank" data-id="github">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub">
+        </a>
+        <a class="icon" href="https://google.com" target="_blank" data-id="google">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/google.svg" alt="Google">
+        </a>
+        <a class="icon" href="https://reddit.com" target="_blank" data-id="reddit">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/reddit.svg" alt="Reddit">
+        </a>
+        <a class="icon" href="https://amazon.de" target="_blank" data-id="amazon">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/amazon.svg" alt="Amazon">
+        </a>
+        <a class="icon" href="https://microsoft.com" target="_blank" data-id="microsoft">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/microsoft.svg" alt="Microsoft">
+        </a>
+        <a class="icon" href="https://chat.openai.com" target="_blank" data-id="chatgpt">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/openai.svg" alt="ChatGPT">
+        </a>
+        <a class="icon" href="https://www.bing.com" target="_blank" data-id="bing">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/bing.svg" alt="Bing">
+        </a>
+        <a class="icon" href="https://outlook.com" target="_blank" data-id="outlook">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/microsoftoutlook.svg" alt="Outlook">
+        </a>
+        <a class="icon" href="https://www.office.com" target="_blank" data-id="office">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/microsoftoffice.svg" alt="Microsoft 365">
+        </a>
+        <a class="icon" href="https://www.mediamarkt.de/" target="_blank" data-id="mediamarkt">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/mediamarkt.svg" alt="MediaMarkt">
+        </a>
+    </div>
+
+    <button id="addIconBtn">Neues Icon hinzufügen</button>
+
+    <!-- Widgets -->
+    <div class="widget-container">
+        <!-- Taschenrechner -->
+        <div class="widget calculator">
+            <h3>Taschenrechner</h3>
+          <label for="calcDisplay"></label><input type="text" id="calcDisplay" readonly>
+            <div>
+                <button onclick="pressCalc('7')">7</button>
+                <button onclick="pressCalc('8')">8</button>
+                <button onclick="pressCalc('9')">9</button>
+                <button onclick="pressCalc('/')">/</button>
+            </div>
+            <div>
+                <button onclick="pressCalc('4')">4</button>
+                <button onclick="pressCalc('5')">5</button>
+                <button onclick="pressCalc('6')">6</button>
+                <button onclick="pressCalc('*')">*</button>
+            </div>
+            <div>
+                <button onclick="pressCalc('1')">1</button>
+                <button onclick="pressCalc('2')">2</button>
+                <button onclick="pressCalc('3')">3</button>
+                <button onclick="pressCalc('-')">-</button>
+            </div>
+            <div>
+                <button onclick="pressCalc('0')">0</button>
+                <button onclick="pressCalc('.')">.</button>
+                <button onclick="calculate()">=</button>
+                <button onclick="pressCalc('+')">+</button>
+            </div>
+            <div>
+                <button onclick="clearCalc()">C</button>
+            </div>
+        </div>
+
+        <!-- ToDo-Liste -->
+        <div class="widget todo">
+            <h3>ToDo-Liste</h3>
+          <label for="todoInput"></label><input type="text" id="todoInput" placeholder="Neue Aufgabe…">
+            <button onclick="addTodo()">Hinzufügen</button>
+            <ul id="todoList"></ul>
+        </div>
+    </div>
+
+</div>
+
+<script>
+/* --- Uhrzeit & Datum --- */
+function updateClock() {
+    const now = new Date();
+    let h = String(now.getHours()).padStart(2,"0");
+    let m = String(now.getMinutes()).padStart(2,"0");
+    let s = String(now.getSeconds()).padStart(2,"0");
+    document.getElementById("clock").innerText = `${h}:${m}:${s}`;
+
+    const days = ["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"];
+    const months = ["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
+    let day = days[now.getDay()];
+    let date = now.getDate();
+    let month = months[now.getMonth()];
+    let year = now.getFullYear();
+    document.getElementById("date").innerText = `${day}, ${date}. ${month} ${year}`;
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+/* --- Drag & Drop Icons + LocalStorage --- */
+const iconGrid = document.getElementById('iconGrid');
+let dragged = null;
+function saveOrder() {
+    const order = Array.from(iconGrid.children).map(icon => ({
+        id: icon.dataset.id,
+        href: icon.href,
+        src: icon.querySelector('img').src,
+        alt: icon.querySelector('img').alt
+    }));
+    localStorage.setItem('iconOrder', JSON.stringify(order));
+}
+function loadOrder() {
+    const order = JSON.parse(localStorage.getItem('iconOrder'));
+    if(order) {
+        iconGrid.innerHTML = '';
+        order.forEach(item => {
+            const a = document.createElement('a');
+            a.className = 'icon';
+            a.href = item.href;
+            a.target = "_blank";
+            a.dataset.id = item.id;
+            const img = document.createElement('img');
+            img.src = item.src;
+            img.alt = item.alt;
+            a.appendChild(img);
+            a.setAttribute('draggable', true);
+            iconGrid.appendChild(a);
+        });
+    }
+}
+loadOrder();
+iconGrid.addEventListener('dragstart', e => { dragged = e.target; e.target.style.opacity='0.5'; });
+iconGrid.addEventListener('dragend', e => { dragged.style.opacity='1'; dragged=null; saveOrder(); });
+iconGrid.addEventListener('dragover', e => {
+    e.preventDefault();
+    const target = e.target.closest('.icon');
+    if(target && target!==dragged){
+        const bounding = target.getBoundingClientRect();
+        const offset = e.clientX - bounding.left + e.clientY - bounding.top;
+        if(offset < bounding.width/2) iconGrid.insertBefore(dragged,target);
+        else iconGrid.insertBefore(dragged,target.nextSibling);
+    }
+});
+document.querySelectorAll('.icon').forEach(icon => icon.setAttribute('draggable', true));
+document.getElementById('addIconBtn').addEventListener('click', () => {
+    const href = prompt("URL der Website eingeben:"); if(!href) return;
+    const src = prompt("Link zum Icon (SVG/PNG) eingeben:"); if(!src) return;
+    const alt = prompt("Name/Alt-Text des Icons:"); if(!alt) return;
+    const id = alt.toLowerCase().replace(/\s+/g,'-');
+    const a = document.createElement('a');
+    a.className='icon'; a.href=href; a.target="_blank"; a.dataset.id=id;
+    const img=document.createElement('img'); img.src=src; img.alt=alt; a.appendChild(img);
+    a.setAttribute('draggable', true); iconGrid.appendChild(a); saveOrder();
+});
+
+/* --- Taschenrechner Funktionen --- */
+let calcInput = '';
+function pressCalc(val){ calcInput += val; document.getElementById('calcDisplay').value=calcInput; }
+function calculate(){ try{ calcInput = eval(calcInput).toString(); } catch(e){ calcInput='Fehler'; } document.getElementById('calcDisplay').value=calcInput; }
+function clearCalc(){ calcInput=''; document.getElementById('calcDisplay').value=''; }
+
+/* --- ToDo-Liste Funktionen --- */
+function saveTodos(){
+    const todos = Array.from(document.querySelectorAll('#todoList li')).map(li=>({text:li.firstChild.textContent, completed:li.classList.contains('completed')}));
+    localStorage.setItem('todos', JSON.stringify(todos));
+}
+function loadTodos(){
+    const todos = JSON.parse(localStorage.getItem('todos'))||[];
+    const list=document.getElementById('todoList'); list.innerHTML='';
+    todos.forEach(item=>{
+        const li=document.createElement('li'); li.textContent=item.text;
+        if(item.completed) li.classList.add('completed');
+        li.onclick=()=>{ li.classList.toggle('completed'); saveTodos(); }
+        const del = document.createElement('span'); del.textContent='✖'; del.style.cursor='pointer';
+        del.onclick=(e)=>{ e.stopPropagation(); li.remove(); saveTodos(); }
+        li.appendChild(del); list.appendChild(li);
+    });
+}
+function addTodo(){
+    const input=document.getElementById('todoInput'); const val=input.value.trim(); if(!val) return;
+    const li=document.createElement('li'); li.textContent=val;
+    li.onclick=()=>{ li.classList.toggle('completed'); saveTodos(); }
+    const del=document.createElement('span'); del.textContent='✖'; del.style.cursor='pointer';
+    del.onclick=(e)=>{ e.stopPropagation(); li.remove(); saveTodos(); }
+    li.appendChild(del); document.getElementById('todoList').appendChild(li); input.value=''; saveTodos();
+}
+loadTodos();
+</script>
+
+</body>
+</html>
