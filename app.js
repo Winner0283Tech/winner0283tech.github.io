@@ -91,7 +91,7 @@ async function askAI() {
   // Stattdessen Backend / Serverless Function nutzen.
 
   try {
-    const response = await fetch("https://YOUR-BACKEND/api/ai", {
+    const response = await fetch("https://https://winner0283tech-github-io.vercel.app//api/ai", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ prompt, code })
