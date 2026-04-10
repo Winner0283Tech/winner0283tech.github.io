@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Editor</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+    }
+    #container {
+      height: calc(100vh - 40px);
+    }
+    nav {
+      height: 40px;
+      background: #222;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+    }
+    nav a {
+      color: white;
+      margin-right: 15px;
+      text-decoration: none;
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/loader.js"></script>
+</head>
+
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="editor.html">Editor</a>
+</nav>
+
+<div id="container"></div>
+
+<script>
+  require.config({
+    paths: { vs: "https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs" }
+  });
+
+  require(["vs/editor/editor.main"], function () {
+    monaco.editor.create(document.getElementById("container"), {
+      value: "// Code hier schreiben\nconsole.log('Hello Editor');",
+      language: "javascript",
+      theme: "vs-dark",
+      automaticLayout: true
+    });
+  });
+</script>
+
+</body>
+</html>
