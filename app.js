@@ -1,6 +1,6 @@
 let editor;
 
-const API_URL = "https://winner0283tech-github-io.vercel.app/api/ai"; 
+const API_URL = "https://https://winner0283tech-github-eujjadftv-winner0283techs-projects.vercel.app/api/ai"; 
 // 🔥 WICHTIG: HIER deine echte Vercel URL eintragen
 
 let files = JSON.parse(localStorage.getItem("files")) || {
