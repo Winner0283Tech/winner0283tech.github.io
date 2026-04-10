@@ -4,54 +4,78 @@
   <meta charset="UTF-8">
   <title>Editor</title>
 
+  <!-- Moderne Tech Font (System UI) -->
   <style>
-    html, body {
+    body {
       margin: 0;
-      height: 100%;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont,
+                   "Segoe UI", Roboto, Arial, sans-serif;
+      background: #1e1e1e;
+      color: white;
     }
-    #container {
-      height: calc(100vh - 40px);
-    }
+
     nav {
-      height: 40px;
-      background: #222;
+      height: 50px;
       display: flex;
       align-items: center;
-      padding: 0 10px;
+      padding: 0 15px;
+      background: #111;
+      border-bottom: 1px solid #333;
     }
+
     nav a {
-      color: white;
-      margin-right: 15px;
+      color: #fff;
       text-decoration: none;
+      margin-right: 15px;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #00d4ff;
+    }
+
+    #container {
+      height: calc(100vh - 50px);
+      width: 100%;
     }
   </style>
 
+  <!-- Monaco Editor -->
   <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/loader.js"></script>
 </head>
 
 <body>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="editor.html">Editor</a>
-</nav>
+  <!-- Navbar -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="editor.html">Editor</a>
+  </nav>
 
-<div id="container"></div>
+  <!-- Editor -->
+  <div id="container"></div>
 
-<script>
-  require.config({
-    paths: { vs: "https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs" }
-  });
-
-  require(["vs/editor/editor.main"], function () {
-    monaco.editor.create(document.getElementById("container"), {
-      value: "// Code hier schreiben\nconsole.log('Hello Editor');",
-      language: "javascript",
-      theme: "vs-dark",
-      automaticLayout: true
+  <script>
+    require.config({
+      paths: {
+        vs: "https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs"
+      }
     });
-  });
-</script>
+
+    require(["vs/editor/editor.main"], function () {
+      monaco.editor.create(document.getElementById("container"), {
+        value: `// Willkommen im Editor 🚀
+function hello() {
+  console.log("Hello World");
+}
+
+hello();`,
+        language: "javascript",
+        theme: "vs-dark",
+        automaticLayout: true
+      });
+    });
+  </script>
 
 </body>
 </html>
